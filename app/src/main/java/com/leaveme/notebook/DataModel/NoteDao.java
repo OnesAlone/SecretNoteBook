@@ -28,6 +28,7 @@ public class NoteDao extends AbstractDao<Note, Long> {
         public final static Property TimeStamp = new Property(3, long.class, "timeStamp", false, "TIME_STAMP");
         public final static Property State = new Property(4, int.class, "state", false, "STATE");
         public final static Property PictureId = new Property(5, String.class, "pictureId", false, "PICTURE_ID");
+        public final static Property Index = new Property(6, long.class, "index", false, "INDEX");
     }
 
 
@@ -48,7 +49,8 @@ public class NoteDao extends AbstractDao<Note, Long> {
                 "\"CONTENT\" TEXT," + // 2: content
                 "\"TIME_STAMP\" INTEGER NOT NULL ," + // 3: timeStamp
                 "\"STATE\" INTEGER NOT NULL ," + // 4: state
-                "\"PICTURE_ID\" TEXT);"); // 5: pictureId
+                "\"PICTURE_ID\" TEXT," + // 5: pictureId
+                "\"INDEX\" INTEGER NOT NULL );"); // 6: index
     }
 
     /** Drops the underlying database table. */
@@ -78,6 +80,7 @@ public class NoteDao extends AbstractDao<Note, Long> {
         if (pictureId != null) {
             stmt.bindString(6, pictureId);
         }
+        stmt.bindLong(7, entity.getIndex());
     }
 
     @Override
@@ -101,6 +104,7 @@ public class NoteDao extends AbstractDao<Note, Long> {
         if (pictureId != null) {
             stmt.bindString(6, pictureId);
         }
+        stmt.bindLong(7, entity.getIndex());
     }
 
     @Override
@@ -116,7 +120,8 @@ public class NoteDao extends AbstractDao<Note, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // content
             cursor.getLong(offset + 3), // timeStamp
             cursor.getInt(offset + 4), // state
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // pictureId
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // pictureId
+            cursor.getLong(offset + 6) // index
         );
         return entity;
     }
@@ -129,6 +134,7 @@ public class NoteDao extends AbstractDao<Note, Long> {
         entity.setTimeStamp(cursor.getLong(offset + 3));
         entity.setState(cursor.getInt(offset + 4));
         entity.setPictureId(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setIndex(cursor.getLong(offset + 6));
      }
     
     @Override

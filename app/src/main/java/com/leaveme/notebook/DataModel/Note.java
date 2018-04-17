@@ -16,17 +16,19 @@ public class Note {
     private String title;//笔记标题
     private String content;//笔记内容
     private long timeStamp;//笔记时间
-    private int state;//笔记状态
+    private int state;//笔记状态  0:正常状态 1:加密状态 -1：已删除状态
     private String pictureId;//笔记中的图片id
-    @Generated(hash = 1047120823)
+    private long index;//显示顺序排序
+    @Generated(hash = 587745031)
     public Note(long id, String title, String content, long timeStamp, int state,
-            String pictureId) {
+            String pictureId, long index) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.timeStamp = timeStamp;
         this.state = state;
         this.pictureId = pictureId;
+        this.index = index;
     }
     @Generated(hash = 1272611929)
     public Note() {
@@ -66,6 +68,12 @@ public class Note {
     }
     public void setPictureId(String pictureId) {
         this.pictureId = pictureId;
+    }
+    public long getIndex() {
+        return this.index;
+    }
+    public void setIndex(long index) {
+        this.index = index;
     }
 
 }

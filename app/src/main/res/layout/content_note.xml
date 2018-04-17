@@ -20,6 +20,7 @@
         android:layout_height="match_parent"
         android:hint="内容"
         android:id="@+id/edt_content"
-        android:gravity="left|top"/>
+        android:gravity="left|top"
+        android:background="@null"/>
 
 </LinearLayout>

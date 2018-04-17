@@ -14,7 +14,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     greendao {
-        schemaVersion 1
+        schemaVersion 2
         targetGenDir 'src/main/java'
     }
     buildTypes {
@@ -35,5 +35,6 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'net.zetetic:android-database-sqlcipher:3.5.1'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
     testCompile 'junit:junit:4.12'
 }
