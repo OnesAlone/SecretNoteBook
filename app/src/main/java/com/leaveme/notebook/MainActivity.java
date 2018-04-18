@@ -172,7 +172,6 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
         if (ContextCompat.checkSelfPermission(this,permission) != PackageManager.PERMISSION_GRANTED) {
             //没有该权限，则加入到请求列表
             permissionsList.add(permission);
-            // Check for Rationale Option
             if (!ActivityCompat.shouldShowRequestPermissionRationale(this,permission))
                 return false;
         }
@@ -236,12 +235,12 @@ public class MainActivity extends AppCompatActivity implements OnStartDragListen
             case REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS:
                 //判断是否请求成功
             {
-                //请求成功，进入到程序初始化、架子按数据库
+                //请求成功
                 if(grantResults.length>0&&grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 }
                 else{
 //                    //请求失败，提示用户“请求权限失败
-//                    Log.e("TAG","请求权限失败");
+                    Log.e("TAG","请求权限失败");
 //                    Toast.makeText(this,"请求权限失败，请手动设置",Toast.LENGTH_LONG).show();
 //                    this.finish();
                 }

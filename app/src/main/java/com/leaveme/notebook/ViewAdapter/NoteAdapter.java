@@ -70,7 +70,11 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ItemViewHolder
         ViewGroup.LayoutParams layoutParams = viewHolder.itemView.getLayoutParams();
         layoutParams.height = LinearLayout.LayoutParams.WRAP_CONTENT;
 
-        holder.content.setText(notes.get(position).getContent());
+        if(notes.get(position).getState()==0) {
+            holder.content.setText(notes.get(position).getContent());
+        }else {
+            holder.content.setText("核心机密!!!");
+        }
         holder.time.setText(dateFormatString.transform(notes.get(position).getTimeStamp()));
         holder.title.setText(notes.get(position).getTitle());
 
@@ -96,6 +100,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ItemViewHolder
 
     @Override
     public int getItemCount() {
+        //对文档中的内容条目进行动态刷新，当出现删除或者新增操作时，能够及时的通知UI界面刷新内容
         int size = noteDao.queryBuilder().where(NoteDao.Properties.State.ge(0)).list().size();
         if(size!=notes.size()){
             notes = noteDao.queryBuilder().where(NoteDao.Properties.State.ge(0)).list();

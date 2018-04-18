@@ -14,7 +14,7 @@ public class dateFormatString {
         day = calendar.get(Calendar.DAY_OF_MONTH)+"\n\r";
         month = calendar.get(Calendar.MONTH)+1+"/";
         year = calendar.get(Calendar.YEAR)+"/";
-        hour = calendar.get(Calendar.HOUR)+":";
+        hour = calendar.get(Calendar.HOUR_OF_DAY)+":";
         minute = calendar.get(Calendar.MINUTE)+":";
         second = calendar.get(Calendar.SECOND)+"";
         return year+month+day+hour+minute+second;

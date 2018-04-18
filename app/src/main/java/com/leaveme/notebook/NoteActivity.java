@@ -96,6 +96,9 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void storeNote(){
+        if(content.getText().toString().equals("")&&content.getText().toString().equals("")){
+            return;
+        }
         DaoSession session = GreenDaoHelper.getDaoSession(this);
         NoteDao noteDao= session.getNoteDao();
         note.setContent(content.getText().toString());
